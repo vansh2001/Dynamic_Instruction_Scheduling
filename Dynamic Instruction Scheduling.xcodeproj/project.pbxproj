@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8D136ADD21B30C6E00847445 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8D136ADC21B30C6E00847445 /* main.cpp */; };
+		8D136AE621B30CD100847445 /* sim_proc.cc in Sources */ = {isa = PBXBuildFile; fileRef = 8D136AE321B30CD100847445 /* sim_proc.cc */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -24,7 +24,11 @@
 
 /* Begin PBXFileReference section */
 		8D136AD921B30C6E00847445 /* Dynamic Instruction Scheduling */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Dynamic Instruction Scheduling"; sourceTree = BUILT_PRODUCTS_DIR; };
-		8D136ADC21B30C6E00847445 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		8D136AE321B30CD100847445 /* sim_proc.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = sim_proc.cc; sourceTree = "<group>"; };
+		8D136AE421B30CD100847445 /* sim_proc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sim_proc.h; sourceTree = "<group>"; };
+		8D136AE521B30CD100847445 /* gcc_trace.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = gcc_trace.txt; sourceTree = "<group>"; };
+		8D136AE721B30E5300847445 /* val_trace_perl1 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = val_trace_perl1; sourceTree = "<group>"; };
+		8D136AE821B30E5300847445 /* val_trace_gcc1 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = val_trace_gcc1; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,7 +61,11 @@
 		8D136ADB21B30C6E00847445 /* Dynamic Instruction Scheduling */ = {
 			isa = PBXGroup;
 			children = (
-				8D136ADC21B30C6E00847445 /* main.cpp */,
+				8D136AE321B30CD100847445 /* sim_proc.cc */,
+				8D136AE421B30CD100847445 /* sim_proc.h */,
+				8D136AE821B30E5300847445 /* val_trace_gcc1 */,
+				8D136AE721B30E5300847445 /* val_trace_perl1 */,
+				8D136AE521B30CD100847445 /* gcc_trace.txt */,
 			);
 			path = "Dynamic Instruction Scheduling";
 			sourceTree = "<group>";
@@ -118,7 +126,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8D136ADD21B30C6E00847445 /* main.cpp in Sources */,
+				8D136AE621B30CD100847445 /* sim_proc.cc in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
