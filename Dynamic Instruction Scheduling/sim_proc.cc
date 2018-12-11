@@ -19,8 +19,8 @@ int main (int argc, char* argv[])
     FILE *FP;               // File handler
     char *trace_file;       // Variable that holds trace file name;
     proc_params params;       // look at sim_bp.h header file for the the definition of struct proc_params
-    int op_type, dest, src1, src2;  // Variables are read from trace file
-    unsigned long int pc; // Variable holds the pc read from input file
+    //int op_type, dest, src1, src2;  // Variables are read from trace file
+    //unsigned long int pc; // Variable holds the pc read from input file
     
     if (argc != 5)
     {
@@ -45,14 +45,36 @@ int main (int argc, char* argv[])
         exit(EXIT_FAILURE);
     }
     
-    while(fscanf(FP, "%lx %d %d %d %d", &pc, &op_type, &dest, &src1, &src2) != EOF)
-    {
-        
-        printf("%lx %d %d %d %d\n", pc, op_type, dest, src1, src2); //Print to check if inputs have been read correctly
-        /*************************************
-            Add calls to OOO simulator here
-        **************************************/
-    }
+    pipeline pipe(FP, params.width, params.rob_size, params.iq_size);
+    pipe.Make_RMT();
+    pipe.Make_ROB();
+    pipe.Make_IQ();
+    pipe.Make_execute_list();
+//    while(fscanf(FP, "%lx %d %d %d %d", &pc, &op_type, &dest, &src1, &src2) != EOF)
+//    {
+//
+//        printf("%lx %d %d %d %d\n", pc, op_type, dest, src1, src2); //Print to check if inputs have been read correctly
+//        /*************************************
+//            Add calls to OOO simulator here
+//        **************************************/
+//    }
+    int i =0;
     
+    do{
+        pipe.Retire();
+        pipe.Writeback();
+        pipe.Execute();
+        pipe.Issue();
+        pipe.Dispatch();
+        pipe.RegRead();
+        pipe.Rename();
+        pipe.Decode();
+        pipe.Fetch();
+        i++;
+        
+    } while(pipe.Advance_Cycle());
+    
+    
+    printf("code ended-----\n");
     return 0;
 }
