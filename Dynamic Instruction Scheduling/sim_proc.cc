@@ -32,10 +32,10 @@ int main (int argc, char* argv[])
     params.iq_size      = strtoul(argv[2], NULL, 10);
     params.width        = strtoul(argv[3], NULL, 10);
     trace_file          = argv[4];
-    printf("rob_size:%lu "
-            "iq_size:%lu "
-            "width:%lu "
-            "tracefile:%s\n", params.rob_size, params.iq_size, params.width, trace_file);
+//    printf("rob_size:%lu "
+//            "iq_size:%lu "
+//            "width:%lu "
+//            "tracefile:%s\n", params.rob_size, params.iq_size, params.width, trace_file);
     // Open trace_file in read mode
     FP = fopen(trace_file, "r");
     if(FP == NULL)
@@ -58,7 +58,7 @@ int main (int argc, char* argv[])
 //            Add calls to OOO simulator here
 //        **************************************/
 //    }
-    int i =0;
+    //int i =0;
     
     do{
         pipe.Retire();
@@ -70,11 +70,20 @@ int main (int argc, char* argv[])
         pipe.Rename();
         pipe.Decode();
         pipe.Fetch();
-        i++;
+        //i++;
         
     } while(pipe.Advance_Cycle());
     
     
-    printf("code ended-----\n");
+    printf("# === Simulator Command =========\n");
+    printf("#");
+    printf(" ./sim %lu %lu %lu %s\n", params.rob_size, params.iq_size, params.width, trace_file);
+    printf("# === Processor Configuration ===\n");
+    printf("# ROB_SIZE = %lu\n", params.rob_size);
+    printf("# IQ_SIZE = %lu\n", params.iq_size);
+    printf("# WIDTH = %lu\n", params.width);
+    printf("# === Simulation Results ========\n");
+    pipe.print_results();
+    //printf("");
     return 0;
 }
