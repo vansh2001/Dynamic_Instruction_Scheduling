@@ -84,6 +84,5 @@ int main (int argc, char* argv[])
     printf("# WIDTH = %lu\n", params.width);
     printf("# === Simulation Results ========\n");
     pipe.print_results();
-    //printf("");
     return 0;
 }
